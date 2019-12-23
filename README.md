@@ -66,7 +66,12 @@ For example, to connect to Multiplayer Piano's server (which requires an origin 
 ```
 ws://localhost:8080/?target=ws://www.multiplayerpiano.com:443&origin=http://www.multiplayerpiano.com
 ```
-
+Example: To use with MPP in browser, paste into console:
+```js
+MPP.client.stop();
+MPP.client.uri = "ws://localhost:8080/?target=ws://www.multiplayerpiano.com:443&origin=http://www.multiplayerpiano.com";
+MPP.client.start();
+```
 Query parameters may or may not be encoded, but querystring chars (`&` and `=`) must be encoded to escape them.
 
 **Note:** If the `target` is missing or invalid, or if an error occurs when connecting to the remote host (such as if it responded with a 403), your connection is simply closed. Ideally, the proxy server would wait for the connection to the target to finish, before responding to the client with the same response of the target; however, I found this much too complicated to set up, so I just kept it simple.
